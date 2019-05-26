@@ -1,27 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from "react";
+
+import Button from 'react-bootstrap/Button';
+import Navbar from './components/Navbar';
+import Filters from './components/Filters';
+import Playlists from './components/Playlists';
+// import Form from 'react-bootstrap/Form';
+// import FormControl from 'react-bootstrap/FormControl';
+
 import './App.css';
 
-
+import { getAuthEndpoint, getAccessToken, clearToken } from './helpers/auth';
+import {makeApiRequest} from './helpers/api';
 
 function App() {
+  const [token, setToken] = useState(getAccessToken());
+
+  const logout = () => {
+    clearToken();
+    setToken(null);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Navbar token={token} logout={logout}/>
+      <div className="content">
+
+      {!token && (
+        <div className="loginWrapper">
+          <Button variant="primary" href={getAuthEndpoint()}>Login with Spotify</Button>
+        </div>
+      )}
+      {token && (
+        <div>
+          <Filters />
+          <Playlists />
+        </div>
+      )}
+      </div>
+    </div >
   );
 }
 
