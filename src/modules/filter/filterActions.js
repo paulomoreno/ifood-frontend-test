@@ -11,7 +11,6 @@ export const loading = () => {
 
 export const getFilters = () => {
   return dispatch => {
-    console.log('Will load');
     axios(FILTER_URL).then(resp=>{
       dispatch([
         {
