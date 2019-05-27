@@ -1,0 +1,12 @@
+.playlistButton:hover{
+    background-color: #aaa;
+    color: black;
+    text-decoration: none;
+    font-size: 1.8rem;
+}
+
+.playlistButton{
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+}

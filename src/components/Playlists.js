@@ -1,24 +1,33 @@
 import React, { useEffect } from "react";
-import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import {getPlaylists} from '../modules/playlist/playlistActions';
+import Playlist from "./Playlist";
 
 function Playlists({ playlists, getPlaylists }) {
   useEffect(() => {
+    console.log('a')
     getPlaylists();
   }, []);
 
   return (
-    <div>
+    <Container fluid>
         <h1>Playlists</h1>
-        {playlists && playlists.items && playlists.items.map(playlist => (
-          <div>
-            <h3>{playlist.name}</h3>
-          </div>
-        ))}
-    </div>
+        <Row>
+          {playlists && playlists.items && playlists.items.map(playlist => (
+            <Col>
+              <Playlist playlist={playlist}/>
+            </Col>
+          ))}
+          {(!playlists || playlists.length === 0) && (
+            <p>No playlists available</p>
+          )}
+        </Row>
+    </Container>
 
   );
 }
