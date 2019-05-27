@@ -3,39 +3,29 @@ import { toastr } from 'react-redux-toastr';
 
 export const loading = () => {
   return {
-    type: 'LOADING_USER'
+    type: 'LOADING_PLAYLISTS'
   }
 }
 
-export const clearUser = () => {
-  return dispatch => {
-    dispatch(
-      {
-        type: 'USER',
-        payload: null
-      });
-  }
-}
-
-export const getUser = () => {
+export const getPlaylists = () => {
   return dispatch => {
     apiRequest({
       method: 'get',
-      url: baseUrl,
+      url: 'https://api.spotify.com/v1/browse/featured-playlists',
     }).then(resp => {
       dispatch([
         {
-          type: 'USER',
-          payload: resp.data
+          type: 'PLAYLISTS',
+          payload: resp.data.playlists
         },
         loading()
       ]);
     }).catch(error => {
       toastr.error('Erro', 'Erro ao buscar dados do usuário. ')
       dispatch([
-        { type: 'USER', payload: {} },
+        { type: 'PLAYLISTS', payload: {} },
         loading()
-      ])
-    })
+      ]);
+    });
   }
 }

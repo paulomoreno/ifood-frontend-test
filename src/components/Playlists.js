@@ -3,14 +3,21 @@ import Navbar from 'react-bootstrap/Navbar';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import {getUser, clearUser} from '../modules/user/userActions';
+import {getPlaylists} from '../modules/playlist/playlistActions';
 
-function Filters({ }) {
-
+function Playlists({ playlists, getPlaylists }) {
+  useEffect(() => {
+    getPlaylists();
+  }, []);
 
   return (
     <div>
-        Playlists
+        <h1>Playlists</h1>
+        {playlists && playlists.items && playlists.items.map(playlist => (
+          <div>
+            <h3>{playlist.name}</h3>
+          </div>
+        ))}
     </div>
 
   );
@@ -18,14 +25,14 @@ function Filters({ }) {
 
 function mapStateToProps(state) {
   return {
-    loading: state.user.loading,
-    user: state.user.user,
+    loading: state.playlists.loading,
+    playlists: state.playlists.list,
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getUser, clearUser }, dispatch)
+  return bindActionCreators({ getPlaylists }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filters)
+export default connect(mapStateToProps, mapDispatchToProps)(Playlists)
 

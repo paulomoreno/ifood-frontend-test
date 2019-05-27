@@ -4,6 +4,7 @@ import { getAccessToken, goToLogin } from './auth';
 const _baseUrl = 'https://api.spotify.com/v1/me';
 
 export const baseUrl = _baseUrl;
+
 export const apiRequest = async (options = {}) => {
 
   if (!options.method) options.method = 'get';
