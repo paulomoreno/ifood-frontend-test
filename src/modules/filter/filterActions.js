@@ -11,6 +11,8 @@ export const loading = () => {
 
 export const getFilters = () => {
   return dispatch => {
+    dispatch(loading());
+    
     axios(FILTER_URL).then(resp=>{
       dispatch([
         {

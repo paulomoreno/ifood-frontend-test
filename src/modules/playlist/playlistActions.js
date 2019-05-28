@@ -9,6 +9,8 @@ export const loading = () => {
 
 export const getPlaylists = () => {
   return dispatch => {
+    dispatch(loading());
+    
     apiRequest({
       method: 'get',
       url: 'https://api.spotify.com/v1/browse/featured-playlists',

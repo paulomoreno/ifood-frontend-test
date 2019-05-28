@@ -3,6 +3,8 @@ import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import Loader from './Loader';
+
 import { getFilters } from '../modules/filter/filterActions';
 
 const TYPE_SELECT = 'TYPE_SELECT';
@@ -42,13 +44,16 @@ const Filter = ({ data }) => {
   }
 }
 
-function Filters({ filters, getFilters }) {
+function Filters({ filters, getFilters, loading }) {
   useEffect(() => {
     getFilters();
   }, []);
 
   return (
     <Form>
+      {loading && (
+        <Loader/>
+      )}
       {filters && filters.map(filter => (
         <Filter data={filter} />
       ))}

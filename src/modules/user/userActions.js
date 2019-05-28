@@ -19,6 +19,8 @@ export const clearUser = () => {
 
 export const getUser = () => {
   return dispatch => {
+    dispatch(loading());
+    
     apiRequest({
       method: 'get',
       url: baseUrl,
