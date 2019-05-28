@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import Loader from './Loader';
 
-import { getFilters } from '../modules/filter/filterActions';
+import { getFiltersDefs } from '../modules/filter/filterActions';
 
 const TYPE_SELECT = 'TYPE_SELECT';
 const TYPE_NUMBER = 'TYPE_NUMBER';
@@ -44,9 +44,9 @@ const Filter = ({ data }) => {
   }
 }
 
-function Filters({ filters, getFilters, loading }) {
+function Filters({ filters_defs, getFiltersDefs, loading }) {
   useEffect(() => {
-    getFilters();
+    getFiltersDefs();
   }, []);
 
   return (
@@ -54,7 +54,7 @@ function Filters({ filters, getFilters, loading }) {
       {loading && (
         <Loader/>
       )}
-      {filters && filters.map(filter => (
+      {filters_defs && filters_defs.map(filter => (
         <Filter data={filter} />
       ))}
     </Form>
@@ -64,12 +64,12 @@ function Filters({ filters, getFilters, loading }) {
 function mapStateToProps(state) {
   return {
     loading: state.filters.loading,
-    filters: state.filters.list,
+    filters_defs: state.filters.defs,
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getFilters }, dispatch)
+  return bindActionCreators({ getFiltersDefs }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters)

@@ -23,7 +23,7 @@ export const getUser = () => {
     
     apiRequest({
       method: 'get',
-      url: baseUrl,
+      url: `${baseUrl}/me`,
     }).then(resp => {
       dispatch([
         {

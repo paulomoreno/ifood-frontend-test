@@ -9,14 +9,14 @@ export const loading = () => {
   }
 }
 
-export const getFilters = () => {
+export const getFiltersDefs = () => {
   return dispatch => {
     dispatch(loading());
-    
+
     axios(FILTER_URL).then(resp=>{
       dispatch([
         {
-          type: 'FILTERS',
+          type: 'LOAD_FILTERS_DEFS',
           payload: resp.data.filters
         },
         loading()
@@ -24,7 +24,7 @@ export const getFilters = () => {
     }).catch(error => {
       toastr.error('Erro', 'Erro ao carregar filtros.')
       dispatch([
-        { type: 'FILTERS', payload: {} },
+        { type: 'LOAD_FILTERS_DEFS', payload: {} },
         loading()
       ]);
     });

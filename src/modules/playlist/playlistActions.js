@@ -8,12 +8,13 @@ export const loading = () => {
 }
 
 export const getPlaylists = () => {
-  return dispatch => {
+  return (dispatch,getState) => {
     dispatch(loading());
     
     apiRequest({
       method: 'get',
-      url: 'https://api.spotify.com/v1/browse/featured-playlists',
+      url: `${baseUrl}/browse/featured-playlists`,
+      params: getState().filters.filters_query
     }).then(resp => {
       dispatch([
         {

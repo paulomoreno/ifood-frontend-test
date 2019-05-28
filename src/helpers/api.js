@@ -4,7 +4,7 @@ import { toastr } from 'react-redux-toastr';
 import { store } from '../configureStore';
 import { clearToken } from '../modules/auth/authActions';
 
-const _baseUrl = 'https://api.spotify.com/v1/me';
+const _baseUrl = 'https://api.spotify.com/v1';
 
 export const baseUrl = _baseUrl;
 
@@ -24,6 +24,7 @@ export const apiRequest = async (options = {}) => {
         ...options.headers
       },
       data: options.data,
+      query: options.query,
     });
   } catch (error) {
     if (error.response && error.response.status === 401){
