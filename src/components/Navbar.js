@@ -12,8 +12,10 @@ import { getUser, clearUser } from '../modules/user/userActions';
 
 function CustomNavbar({ token, user, getUser, logout }) {
   useEffect(() => {
-    getUser();
-  }, []);
+    if (token) {
+      getUser();
+    }
+  },[token]);
 
   const logoutOnClick = (e) => {
     e.preventDefault();
@@ -60,6 +62,7 @@ function mapStateToProps(state) {
   return {
     loading: state.user.loading,
     user: state.user.user,
+    token: state.auth.access_token
   }
 }
 

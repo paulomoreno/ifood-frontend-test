@@ -10,7 +10,6 @@ import Playlist from "./Playlist";
 
 function Playlists({ playlists, getPlaylists }) {
   useEffect(() => {
-    console.log('a')
     getPlaylists();
   }, []);
 

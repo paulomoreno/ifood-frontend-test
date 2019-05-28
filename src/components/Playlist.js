@@ -8,12 +8,12 @@ import './playlist.css';
 const Playlist = ({ playlist }) => {
   console.log(playlist);
   return (
-    <a href={playlist.href} className="playlistButton">
+    <div className="playlist">
         {playlist.images && playlist.images.length > 0 && (
           <Image src={playlist.images[0].url} rounded />
         )}
         <h3>{playlist.name}</h3>
-    </a>
+    </div>
   );
 }
 
