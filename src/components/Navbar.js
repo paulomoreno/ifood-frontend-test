@@ -5,12 +5,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Loader from './Loader';
 
 import './navbar.css';
 
 import { getUser, clearUser } from '../modules/user/userActions';
 
-function CustomNavbar({ token, user, getUser, logout }) {
+function CustomNavbar({ token, user, getUser, logout, loading }) {
   useEffect(() => {
     if (token) {
       getUser();
@@ -29,6 +30,13 @@ function CustomNavbar({ token, user, getUser, logout }) {
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         <Nav>
+          {loading && (
+            <Loader
+              animation="grow"
+              variant="light"
+              size="sm"
+            />
+          )}
           {token && user && (
             <NavDropdown title={
               <span>

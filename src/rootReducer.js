@@ -4,6 +4,7 @@ import auth from './modules/auth/authReducer';
 import user from './modules/user/userReducer';
 import filters from './modules/filter/filterReducer';
 import playlists from './modules/playlist/playlistReducer';
+import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
     toastr: toastrReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     user,
     filters,
     playlists,
+    form: formReducer,
 });
 
 export default rootReducer;

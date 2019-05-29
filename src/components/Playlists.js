@@ -21,12 +21,12 @@ function Playlists({ playlists, getPlaylists, loading }) {
           {loading && (
             <Loader/>
           )}
-          {playlists && playlists.items && playlists.items.map(playlist => (
+          {!loading && playlists && playlists.items && playlists.items.map(playlist => (
             <Col>
               <Playlist playlist={playlist}/>
             </Col>
           ))}
-          {(!playlists || playlists.length === 0) && !loading && (
+          {(!loading &&!playlists || playlists.length === 0) && !loading && (
             <p>No playlists available</p>
           )}
         </Row>

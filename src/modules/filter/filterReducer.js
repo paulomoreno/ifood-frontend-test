@@ -10,6 +10,8 @@ export default function (state = INITIAL_STATE, action) {
             return { ...state, defs: action.payload }
         case 'LOADING_FILTERS':
             return { ...state, loading: !state.loading }
+        case 'UPDATE_FILTERS_QUERY':
+            return { ...state, filters_query: action.payload }
         default:
             return state
     }

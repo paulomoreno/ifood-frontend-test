@@ -15,6 +15,8 @@ export const apiRequest = async (options = {}) => {
 
   let resp;
 
+  await new Promise(resolve=>setTimeout(resolve,5000));
+
   try {
     resp = await axios({
       method: options.method,
@@ -24,7 +26,7 @@ export const apiRequest = async (options = {}) => {
         ...options.headers
       },
       data: options.data,
-      query: options.query,
+      params: options.params,
     });
   } catch (error) {
     if (error.response && error.response.status === 401){
