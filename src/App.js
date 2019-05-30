@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import Navbar from './components/Navbar';
 import Filters from './components/Filters';
 import Playlists from './components/Playlists';
@@ -45,7 +46,9 @@ function App({clearToken, getToken, access_token}) {
       )}
       {access_token && (
         <div>
-          <Filters />
+          <Container fluid>
+            <Filters />
+          </Container>
           <Playlists />
         </div>
       )}

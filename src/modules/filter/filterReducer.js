@@ -12,7 +12,9 @@ export default function (state = INITIAL_STATE, action) {
         case 'LOADING_FILTERS':
             return { ...state, loading: !state.loading }
         case 'UPDATE_FILTERS_QUERY':
-            return { ...state, filters_query: action.payload.values, local_filters_query: action.payload.local_values}
+            return { ...state, filters_query: action.payload}
+        case 'UPDATE_LOCAL_FILTERS_QUERY':
+            return { ...state, local_filters_query: action.payload}
         default:
             return state
     }

@@ -35,6 +35,7 @@ function Playlists({ playlists, getPlaylists, loading, localFilters }) {
   const filteredPlaylists = filterPlaylists(playlists, localFilters);
 
   console.log('playlsits',playlists);
+  console.log('localFilters',localFilters);
   // const filteredPlaylists = playlists.filter(playlist => playlist.name)
 
   return (
@@ -62,7 +63,7 @@ function mapStateToProps(state) {
   return {
     loading: state.playlists.loading,
     playlists: state.playlists.list,
-    localFilters: state.filters.local_filters_query,
+    localFilters: state.form.localSearchForm.values,
   }
 }
 

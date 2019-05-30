@@ -10,6 +10,7 @@ import Loader from './Loader';
 import './navbar.css';
 
 import { getUser, clearUser } from '../modules/user/userActions';
+import SearchBarForm from "./SearchBarForm";
 
 function CustomNavbar({ token, user, getUser, logout, loading }) {
   useEffect(() => {
@@ -30,6 +31,7 @@ function CustomNavbar({ token, user, getUser, logout, loading }) {
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         <Nav>
+          <SearchBarForm/>
           {loading && (
             <Loader
               animation="grow"
