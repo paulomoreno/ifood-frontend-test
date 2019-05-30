@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import './playlist.css';
 
 const Playlist = ({ playlist }) => {
-  console.log(playlist);
+  // console.log(playlist);
   return (
     <div className="playlist">
         {playlist.images && playlist.images.length > 0 && (

@@ -1,4 +1,4 @@
-import { apiRequest, baseUrl } from '../../helpers/api';
+import { apiRequest, baseUrl, getErrorMessage } from '../../helpers/api';
 import { toastr } from 'react-redux-toastr';
 
 export const loading = () => {
@@ -33,7 +33,9 @@ export const getUser = () => {
         loading()
       ]);
     }).catch(error => {
-      toastr.error('Erro', 'Erro ao buscar dados do usuário. ')
+      let errorMsg = getErrorMessage(error,'Error loading user information');
+      console.error(errorMsg, error);
+      toastr.error('Error', errorMsg);
       dispatch([
         { type: 'USER', payload: {} },
         loading()

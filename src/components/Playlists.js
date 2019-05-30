@@ -9,10 +9,33 @@ import Loader from './Loader';
 import {getPlaylists} from '../modules/playlist/playlistActions';
 import Playlist from "./Playlist";
 
-function Playlists({ playlists, getPlaylists, loading }) {
+let setIntervalId;
+let REFRESH_PL_MS = 30 * 1000;
+
+function Playlists({ playlists, getPlaylists, loading, localFilters }) {
+  // When the component starts, load the playlits
+  // and set the playlist to be refreshed
   useEffect(() => {
     getPlaylists();
+    if (setIntervalId)
+      clearInterval(setIntervalId);
+    setIntervalId = setInterval(()=>{getPlaylists()},REFRESH_PL_MS);
   }, []);
+
+  const filterPlaylists = (playlists, localFilters) => {
+    if (!playlists || !playlists.items) return [];
+    if (!localFilters || !localFilters.name) return playlists.items;
+
+    const searchStr = localFilters.name.toLowerCase();
+    return playlists.items.filter(playlist=>{
+      return playlist.name.toLowerCase().indexOf(searchStr) > -1;
+    });
+  }
+
+  const filteredPlaylists = filterPlaylists(playlists, localFilters);
+
+  console.log('playlsits',playlists);
+  // const filteredPlaylists = playlists.filter(playlist => playlist.name)
 
   return (
     <Container fluid>
@@ -21,12 +44,12 @@ function Playlists({ playlists, getPlaylists, loading }) {
           {loading && (
             <Loader/>
           )}
-          {!loading && playlists && playlists.items && playlists.items.map(playlist => (
-            <Col>
+          {!loading && filteredPlaylists && filteredPlaylists.map((playlist,i) => (
+            <Col key={`playlist_wrapper_${i}`}>
               <Playlist playlist={playlist}/>
             </Col>
           ))}
-          {(!loading &&!playlists || playlists.length === 0) && !loading && (
+          {(!filteredPlaylists || filteredPlaylists.length === 0) && !loading && (
             <p>No playlists available</p>
           )}
         </Row>
@@ -39,6 +62,7 @@ function mapStateToProps(state) {
   return {
     loading: state.playlists.loading,
     playlists: state.playlists.list,
+    localFilters: state.filters.local_filters_query,
   }
 }
 

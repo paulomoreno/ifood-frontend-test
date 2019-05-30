@@ -15,7 +15,7 @@ export const apiRequest = async (options = {}) => {
 
   let resp;
 
-  await new Promise(resolve=>setTimeout(resolve,5000));
+  // await new Promise(resolve=>setTimeout(resolve,5000));
 
   try {
     resp = await axios({
@@ -39,6 +39,21 @@ export const apiRequest = async (options = {}) => {
   }
 
   return resp;
+}
+
+/**
+ * Given an API error, and a default error message, 
+ * tries to get the response error message. If not available
+ * returns the default message.
+ * @param {objet} error 
+ * @param {string} defaultMsg 
+ */
+export const getErrorMessage = (error, defaultMsg) => {
+  try{
+    return error.response.data.error.message;
+  }catch(e){
+    return defaultMsg;
+  }
 }
 
 const clearSession = () => {

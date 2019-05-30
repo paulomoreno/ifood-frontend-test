@@ -1,4 +1,4 @@
-import { apiRequest, baseUrl } from '../../helpers/api';
+import { apiRequest, baseUrl, getErrorMessage } from '../../helpers/api';
 import { toastr } from 'react-redux-toastr';
 
 export const loading = () => {
@@ -6,6 +6,8 @@ export const loading = () => {
     type: 'LOADING_PLAYLISTS'
   }
 }
+
+
 
 export const getPlaylists = () => {
   return (dispatch,getState) => {
@@ -25,7 +27,9 @@ export const getPlaylists = () => {
         loading()
       ]);
     }).catch(error => {
-      toastr.error('Erro', 'Erro ao buscar dados do usuário. ')
+      let errorMsg = getErrorMessage(error,'Error loading list of playlists');
+      console.error(errorMsg, error);
+      toastr.error('Error', errorMsg);
       dispatch([
         { type: 'PLAYLISTS', payload: {} },
         loading()

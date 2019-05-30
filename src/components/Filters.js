@@ -3,6 +3,9 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Popover from 'react-bootstrap/Popover';
 
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
 
 import FormControl from 'react-bootstrap/FormControl';
 import { Field } from 'redux-form' 
@@ -16,16 +19,36 @@ import Loader from './Loader';
 
 import { getFiltersDefs, updateFilterQuery } from '../modules/filter/filterActions';
 
-const FieldInput = ({ input, label, meta, type, placeholder, min, max, values, inputType }) => {
-  let tp = type;
-  if (type === 'select-multi')  tp = 'select';
+
+
+const renderDatePicker = ({input, meta: {touched, error}}) => {
+  console.log(input)
   return (
-    <Form.Group>
+  
+  <div>
+        <DatePicker 
+          selected={input.value}
+          onChange={input.onChange}
+          showTimeSelect
+          timeIntervals={1}
+          shouldCloseOnSelect={false}
+          selected={input.value ? new Date(input.value) : null} 
+        />
+  </div>
+)};
+
+const FieldInput = ({ input, label, meta, type, min, max, values, inputType, entityType }) => {
+  let _as = type;
+  if (type === 'select-multi')
+    _as = 'select';
+  if (entityType === 'DATE_TIME')
+    _as = renderDatePicker;
+
+  return (
+    <Form.Group controlId={input.name}>
       <Form.Label>{label}</Form.Label>
       <Form.Control
-        as={tp}
-        placeholder={placeholder}
-        controlId={input.name}
+        as={_as}
         name={input.name}
         type={inputType}
         min={min}
@@ -33,9 +56,11 @@ const FieldInput = ({ input, label, meta, type, placeholder, min, max, values, i
         value={input.value}
         onChange={input.onChange}
         isInvalid={meta.error}
+        meta={meta}
+        input={input}
       >
       {values && values.map((opt,i) => (
-        <option value={opt.value} selected={(i==0)}>{opt.name}</option>
+        <option key={`filter_option_${input.name}_${i}`} value={opt.value}>{opt.name}</option>
       ))}
       </Form.Control>
       { meta.error && (
@@ -45,42 +70,41 @@ const FieldInput = ({ input, label, meta, type, placeholder, min, max, values, i
   )
 }
 
-
-
-function Filters({ filters_defs, getFiltersDefs, updateFilterQuery, loading }) {
+function Filters({ filtersDefs, getFiltersDefs, updateFilterQuery, loading }) {
   useEffect(() => {
     getFiltersDefs();
   }, []);
-  
-  const handleChange = (values, dispatch, b, c) =>{
-    console.log('2 form changed values: ',values);
-    console.log('2 form changed values: ',dispatch);
-    console.log('2 form changed values: ',b);
-    console.log('2 form changed values: ',c);
-  }
 
   return (
-    <Form onChange={handleChange}>
+    <Form>
       {loading && (
         <Loader/>
       )}
 
-      {filters_defs && (
+      {filtersDefs && (
         <Form.Row>
-          {filters_defs.map(filter => (
-            <Col>
+          {filtersDefs.map((filter,i) => (
+            <Col key={`filters_api_${i}`}>
               <Field 
+                {...filter}
                 label={filter.name} 
                 name={filter.id}
-                type={filter.type} 
                 inputType={filter.inputType} 
                 component={FieldInput}
-                values={filter.values}
-                validate={filter.validate}
               >
               </Field>
             </Col>
           ))}
+          <Col key={`filters_api_${filtersDefs.length}`}>
+            <Field 
+              label="Nome" 
+              name="name"
+              id="name"
+              inputType="input" 
+              component={FieldInput}
+            >
+            </Field>
+          </Col>
         </Form.Row>
       )}
     </Form>
@@ -90,7 +114,7 @@ function Filters({ filters_defs, getFiltersDefs, updateFilterQuery, loading }) {
 function mapStateToProps(state) {
   return {
     loading: state.filters.loading,
-    filters_defs: state.filters.defs,
+    filtersDefs: state.filters.defs,
   }
 }
 
