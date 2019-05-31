@@ -17,7 +17,7 @@ import { validations } from '../helpers/validations';
 
 import Loader from './Loader';
 
-import { getFiltersDefs, updateFilterQuery } from '../modules/filter/filterActions';
+import { getFiltersDefs, updateFilterQuery } from '../store/filter/filterActions';
 
 
 

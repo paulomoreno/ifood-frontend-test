@@ -15,7 +15,7 @@ import './App.css';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 
 import { getAuthEndpoint } from './helpers/auth';
-import { clearToken, getToken } from './modules/auth/authActions';
+import { clearToken, getToken } from './store/auth/authActions';
 
 function App({clearToken, getToken, access_token}) {
   useEffect(() => {

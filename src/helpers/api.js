@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { goToLogin } from './auth';
 import { toastr } from 'react-redux-toastr';
-import { store } from '../configureStore';
-import { clearToken } from '../modules/auth/authActions';
+import { store } from '../store/configureStore';
+import { clearToken } from '../store/ducks/auth';
 
 const _baseUrl = 'https://api.spotify.com/v1';
 

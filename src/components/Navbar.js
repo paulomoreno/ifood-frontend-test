@@ -9,7 +9,7 @@ import Loader from './Loader';
 
 import './navbar.css';
 
-import { getUser, clearUser } from '../modules/user/userActions';
+import { getUser, clearUser } from '../store/user/userActions';
 import SearchBarForm from "./SearchBarForm";
 
 function CustomNavbar({ token, user, getUser, logout, loading }) {

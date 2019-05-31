@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { reducer as toastrReducer } from 'react-redux-toastr';
-import auth from './modules/auth/authReducer';
-import user from './modules/user/userReducer';
-import filters from './modules/filter/filterReducer';
-import playlists from './modules/playlist/playlistReducer';
+import auth from './auth/authReducer';
+import user from './user/userReducer';
+import filters from './filter/filterReducer';
+import playlists from './playlist/playlistReducer';
 import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({

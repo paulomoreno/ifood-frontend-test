@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Loader from './Loader';
 
-import {getPlaylists} from '../modules/playlist/playlistActions';
+import {getPlaylists} from '../store/playlist/playlistActions';
 import Playlist from "./Playlist";
 
 let setIntervalId;
