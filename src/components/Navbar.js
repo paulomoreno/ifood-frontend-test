@@ -1,23 +1,22 @@
 import React, { useEffect } from "react";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Loader from './Loader';
+import SearchBarForm from "./SearchBarForm";
 
 import './navbar.css';
 
 import { getUser, clearUser } from '../store/user/userActions';
-import SearchBarForm from "./SearchBarForm";
 
-function CustomNavbar({ token, user, getUser, logout, loading }) {
+function CustomNavbar({ token, user, getUser, logout }) {
   useEffect(() => {
-    if (token) {
-      getUser();
-    }
-  },[token]);
+    if (token) getUser();
+  }, [token]);
 
   const logoutOnClick = (e) => {
     e.preventDefault();
@@ -31,41 +30,27 @@ function CustomNavbar({ token, user, getUser, logout, loading }) {
       <Navbar.Toggle />
       <Navbar.Collapse className="justify-content-end">
         <Nav>
-          <SearchBarForm/>
-          {loading && (
-            <Loader
-              animation="grow"
-              variant="light"
-              size="sm"
-            />
-          )}
+          <SearchBarForm />
           {token && user && (
-            <NavDropdown title={
-              <span>
-                {user.images && user.images.length > 0 && (
-                  <Image className="userImage" src={user.images[0].url} roundedCircle />
-                )}
-                <b>{user.display_name}</b>
-              </span>
-            } id="collasible-nav-dropdown">
+            <NavDropdown
+              title={
+                <span>
+                  {user.images && user.images.length > 0 && (
+                    <Image className="userImage" src={user.images[0].url} roundedCircle />
+                  )}
+                  <b>{user.display_name}</b>
+                </span>
+              }
+              id="collasible-nav-dropdown"
+            >
               <NavDropdown.Item onClick={logoutOnClick}>Logout</NavDropdown.Item>
             </NavDropdown>
-
           )}
         </Nav>
       </Navbar.Collapse>
     </Navbar >
-
   );
 }
-
-{/* <Navbar.Text>
-            {user.images && user.images.length > 0 && (
-              <Image className="userImage" src={user.images[0].url} roundedCircle />
-            )}
-            <b>{user.display_name}</b>
-            <Button onClick={logoutOnClick} variant="link">Logout</Button>
-          </Navbar.Text> */}
 
 
 function mapStateToProps(state) {

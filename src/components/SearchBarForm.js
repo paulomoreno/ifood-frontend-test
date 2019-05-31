@@ -1,22 +1,30 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
+import MdSearch from 'react-ionicons/lib/MdSearch'
 
 import { Field } from 'redux-form'
 import { reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+
+import './searchBarButton.css';
 
 const FieldInput = ({ input, label, meta }) => {
   return (
-
-    <Form.Group controlId={input.name}>
-      <Form.Label>{label}</Form.Label>
+    <Form.Group 
+      className="customSearchInput"
+      controlId={input.name}
+    >
       <Form.Control
         {...input}
         type="text"
+        placeholder="Buscar por nome"
         meta={meta}
-      >
-      </Form.Control>
+      />
+      <Form.Label>
+        <MdSearch
+          fontSize="2rem"
+          color="#fff"
+        />
+      </Form.Label>
     </Form.Group>
   )
 }
@@ -33,18 +41,10 @@ let SearchBarForm = () => (
   </Form>
 );
 
-function mapStateToProps(state) {
-  return {
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch)
-}
 
 SearchBarForm = reduxForm({
   form: 'localSearchForm'
 })(SearchBarForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBarForm)
+export default SearchBarForm;
 

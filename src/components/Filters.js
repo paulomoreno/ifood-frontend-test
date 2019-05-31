@@ -95,16 +95,6 @@ function Filters({ filtersDefs, getFiltersDefs, updateFilterQuery, loading }) {
               </Field>
             </Col>
           ))}
-          <Col key={`filters_api_${filtersDefs.length}`}>
-            <Field 
-              label="Nome" 
-              name="name"
-              id="name"
-              inputType="input" 
-              component={FieldInput}
-            >
-            </Field>
-          </Col>
         </Form.Row>
       )}
     </Form>

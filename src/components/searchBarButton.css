@@ -1,0 +1,19 @@
+.customSearchInput{
+    margin-right: 1rem;
+}
+
+.customSearchInput input{
+    background-color: transparent !important;
+    border: none;
+    border-bottom: solid 1px #ddd;
+    border-radius: 0;
+    color: #fff;
+}
+
+.customSearchInput input:focus {
+    background-color: transparent;
+    color: #fff;
+    border-bottom-color: #80bdff;
+    outline: 0;
+    box-shadow: none;
+}
