@@ -1,6 +1,7 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
-import MdSearch from 'react-ionicons/lib/MdSearch'
+import InputGroup from 'react-bootstrap/InputGroup';
+import MdSearch from 'react-ionicons/lib/MdSearch';
 
 import { Field } from 'redux-form'
 import { reduxForm } from 'redux-form';
@@ -9,28 +10,30 @@ import './searchBarButton.css';
 
 const FieldInput = ({ input, label, meta }) => {
   return (
-    <Form.Group 
-      className="customSearchInput"
-      controlId={input.name}
-    >
-      <Form.Control
-        {...input}
-        type="text"
-        placeholder="Buscar por nome"
-        meta={meta}
-      />
-      <Form.Label>
+    <InputGroup>
+      <Form.Group
+        className="customSearchInput"
+        controlId={input.name}
+      >
+        <Form.Control
+          {...input}
+          type="text"
+          placeholder="Buscar por nome"
+          meta={meta}
+        />
+      </Form.Group>
+      <InputGroup.Append>
         <MdSearch
           fontSize="2rem"
           color="#fff"
         />
-      </Form.Label>
-    </Form.Group>
+      </InputGroup.Append>
+    </InputGroup>
   )
 }
 
 let SearchBarForm = () => (
-  <Form inline>
+  <Form inline className="justify-content-center mr-md-5">
     <Field
       label="Nome"
       name="name"
