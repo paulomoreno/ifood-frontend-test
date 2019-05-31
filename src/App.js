@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Navbar from './components/Navbar';
-import Filters from './components/Filters';
+import Filters from './components/filters/FiltersWrapper';
 import Playlists from './components/Playlists';
 import ReduxToastr from 'react-redux-toastr'
 import { connect } from 'react-redux';
@@ -46,9 +48,14 @@ function App({clearToken, getToken, access_token}) {
       )}
       {access_token && (
         <div>
-          <Container fluid>
+
+          
+          <Filters />
+
+        
+          {/* <Container fluid class="bg">
             <Filters />
-          </Container>
+          </Container> */}
           <Playlists />
         </div>
       )}

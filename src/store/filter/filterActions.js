@@ -65,7 +65,7 @@ export const getFiltersDefs = () => {
 }
 
 
-const findInArrayOfObjects = (array, id) => array.filter(obj => obj.id === id);
+export const findInArrayOfObjects = (array, id) => array.filter(obj => obj.id === id);
 
 export const updateFilterQuery = () => {
   return (dispatch, getState) => {

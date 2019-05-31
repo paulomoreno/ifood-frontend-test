@@ -7,8 +7,6 @@ export const loading = () => {
   }
 }
 
-
-
 export const getPlaylists = () => {
   return (dispatch,getState) => {
     console.log('will get playlists', getState().filters.filters_query)
