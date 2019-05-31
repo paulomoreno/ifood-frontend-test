@@ -30,6 +30,7 @@ function App({clearToken, getToken, access_token}) {
 
   return (
     <div className="App">
+      <div className="body-bkg"/>
       <Navbar logout={logout}/>
       <ReduxToastr
             timeOut={4000}
@@ -49,7 +50,7 @@ function App({clearToken, getToken, access_token}) {
       {access_token && (
         <div>
 
-          
+
           <Filters />
 
         
