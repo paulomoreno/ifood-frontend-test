@@ -28,7 +28,7 @@ function CustomNavbar({ token, user, getUser, logout }) {
     <Navbar fixed="top" collapseOnSelect expand="md" bg="dark" variant="dark">
       <Navbar.Brand href="#home">Spotifood</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+      <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end text-white">
         {token && user && (
           <Nav>
             <SearchBarForm />

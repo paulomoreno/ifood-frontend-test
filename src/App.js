@@ -32,7 +32,7 @@ function App({ clearToken, getToken, access_token }) {
   return (
     <div className="App h-100">
       <div className="body-bkg" />
-      <Navbar logout={logout} />
+      <Navbar logout={logout}/>
       <ReduxToastr
         timeOut={4000}
         newestOnTop={false}
