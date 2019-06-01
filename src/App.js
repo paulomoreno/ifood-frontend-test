@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import Button from 'react-bootstrap/Button';
-import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Navbar from './components/Navbar';
 import Filters from './components/filters/FiltersWrapper';
@@ -19,7 +20,7 @@ import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 import { getAuthEndpoint } from './helpers/auth';
 import { clearToken, getToken } from './store/auth/authActions';
 
-function App({clearToken, getToken, access_token}) {
+function App({ clearToken, getToken, access_token }) {
   useEffect(() => {
     getToken();
   }, []);
@@ -29,39 +30,44 @@ function App({clearToken, getToken, access_token}) {
   }
 
   return (
-    <div className="App">
-      <div className="body-bkg"/>
-      <Navbar logout={logout}/>
+    <div className="App h-100">
+      <div className="body-bkg" />
+      <Navbar logout={logout} />
       <ReduxToastr
-            timeOut={4000}
-            newestOnTop={false}
-            preventDuplicates
-            position="top-left"
-            transitionIn="fadeIn"
-            transitionOut="fadeOut"
-            progressBar
-            closeOnToastrClick/>
-      <div className="content">
+        timeOut={4000}
+        newestOnTop={false}
+        preventDuplicates
+        position="top-left"
+        transitionIn="fadeIn"
+        transitionOut="fadeOut"
+        progressBar
+        closeOnToastrClick />
       {!access_token && (
-        <div className="loginWrapper">
-          <Button variant="primary" href={getAuthEndpoint()}>Login with Spotify</Button>
+        <div className="content h-100 align-items-center justify-content-center">
+          <Jumbotron variant="dark" className="loginWrapper">
+            <h1>Bem Vindo ao Spotifood</h1>
+            <p>
+              Faça login usando sua conta do Spotify e aproveite uma nova maneira de visualizar suas playlists!
+            </p>
+            <p>
+              <Button variant="success" href={getAuthEndpoint()}>Login com Spotify</Button>
+            </p>
+          </Jumbotron>
         </div>
       )}
       {access_token && (
-        <div>
-
-
-          <Filters />
-
-        
-          {/* <Container fluid class="bg">
-            <Filters />
-          </Container> */}
-          <Playlists />
-        </div>
+        <Container fluid className="playlistsWrapper h-100">
+          <Row className="align-items-stretch h-100">
+            <Col style={{ flexGrow: 1 }}>
+              <Playlists />
+            </Col>
+            <Col xs lg="3" className="filtersWrapper">
+              <Filters />
+            </Col>
+          </Row>
+        </Container>
       )}
-      </div>
-    </div >
+    </div>
   );
 }
 

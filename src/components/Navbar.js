@@ -25,13 +25,13 @@ function CustomNavbar({ token, user, getUser, logout }) {
   }
 
   return (
-    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+    <Navbar fixed="top" collapseOnSelect expand="md" bg="dark" variant="dark">
       <Navbar.Brand href="#home">Spotifood</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-        <Nav>
-          <SearchBarForm />
-          {token && user && (
+        {token && user && (
+          <Nav>
+            <SearchBarForm />
             <NavDropdown
               title={
                 <span>
@@ -45,8 +45,8 @@ function CustomNavbar({ token, user, getUser, logout }) {
             >
               <NavDropdown.Item onClick={logoutOnClick}>Logout</NavDropdown.Item>
             </NavDropdown>
-          )}
-        </Nav>
+          </Nav>
+        )}
       </Navbar.Collapse>
     </Navbar >
   );

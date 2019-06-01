@@ -72,7 +72,7 @@ export const updateFilterQuery = () => {
     const state = getState();
     const form = state.form.filtersForm;
     const filtersDefs = state.filters.defs;
-    const values = form.values;
+    const values = (form.values) ? form.values : {};
 
     // Remove all inputs with errors
     if (form.syncErrors) {

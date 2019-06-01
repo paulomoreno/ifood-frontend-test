@@ -76,23 +76,18 @@ function FiltersForm({ filtersDefs, getFiltersDefs, updateFilterQuery, loading }
       {loading && (
         <Loader />
       )}
-
-      {filtersDefs && (
-        <Form.Row>
-          {filtersDefs.map((filter, i) => (
-            <Col key={`filters_api_${i}`}>
-              <Field
-                {...filter}
-                label={filter.name}
-                name={filter.id}
-                inputType={filter.inputType}
-                component={FieldInput}
-              >
-              </Field>
-            </Col>
-          ))}
+      {filtersDefs && filtersDefs.map((filter, i) => (
+        <Form.Row key={`filters_api_${i}`}>
+          <Field
+            {...filter}
+            label={filter.name}
+            name={filter.id}
+            inputType={filter.inputType}
+            component={FieldInput}
+          >
+          </Field>
         </Form.Row>
-      )}
+      ))}
     </Form>
   );
 }
