@@ -27,6 +27,9 @@ const renderDatePicker = ({ input, meta: { touched, error } }) => {
         showTimeSelect
         timeIntervals={1}
         shouldCloseOnSelect={false}
+        className="form-control"
+        showTimeSelect
+        dateFormat="dd/MM/yyyy h:mm aa"
         selected={input.value ? new Date(input.value) : null}
       />
     </div>

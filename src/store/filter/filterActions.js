@@ -12,6 +12,43 @@ export const loading = () => {
   }
 }
 
+const parseFilters = (filters) => filters.map(def => {
+  def.type =  'input';
+  def.validate = [];
+
+  if (def.values){
+    def.type = 'select-multi';
+    // Add default empty selected option
+    def.values.unshift({
+      key: '',
+      value: '',
+    });
+  }
+
+  if (def.validation) {
+    const v = def.validation;
+
+    if (v.primitiveType === 'INTEGER') {
+      def.validate.push(validations.number);
+      def.inputType = 'number';
+    }
+
+    if (v.min)
+      def.validate.push(validations.minValue(v.min));
+
+    if (v.max)
+      def.validate.push(validations.maxValue(v.max));
+
+    if (v.entityType)
+      def.entityType = v.entityType;
+
+    if (v.pattern)
+      def.pattern = v.pattern;
+
+  }
+  return def;
+});
+
 export const getFiltersDefs = () => {
   return dispatch => {
     dispatch(loading());
@@ -19,38 +56,10 @@ export const getFiltersDefs = () => {
     axios(FILTER_URL).then(resp => {
       const defs = resp.data.filters;
 
-      const parsedFilterDefs = defs.map(def => {
-        def.type = (def.values) ? 'select-multi' : 'input';
-        def.validate = [];
-
-        if (def.validation) {
-          const v = def.validation;
-
-          if (v.primitiveType === 'INTEGER') {
-            def.validate.push(validations.number);
-            def.inputType = 'number';
-          }
-
-          if (v.min)
-            def.validate.push(validations.minValue(v.min));
-
-          if (v.max)
-            def.validate.push(validations.maxValue(v.max));
-
-          if (v.entityType)
-            def.entityType = v.entityType;
-
-          if (v.pattern)
-            def.pattern = v.pattern;
-
-        }
-        return def;
-      });
-
       dispatch([
         {
           type: 'LOAD_FILTERS_DEFS',
-          payload: parsedFilterDefs
+          payload: parseFilters(defs)
         },
         loading()
       ]);

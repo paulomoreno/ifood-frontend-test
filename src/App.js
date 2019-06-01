@@ -43,7 +43,7 @@ function App({ clearToken, getToken, access_token }) {
         progressBar
         closeOnToastrClick />
       {!access_token && (
-        <div className="content h-100 align-items-center justify-content-center">
+        <div className="contentLogin h-100 align-items-center justify-content-center text-white">
           <Jumbotron variant="dark" className="loginWrapper">
             <h1>Bem Vindo ao Spotifood</h1>
             <p>
@@ -56,7 +56,7 @@ function App({ clearToken, getToken, access_token }) {
         </div>
       )}
       {access_token && (
-        <Container fluid className="contentWrapper h-100">
+        <Container fluid className="contentWrapper h-100 text-white">
           <Row className="align-items-stretch h-100">
             <Col style={{ flexGrow: 1 }}>
               <Playlists />
