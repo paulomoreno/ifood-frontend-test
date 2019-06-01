@@ -1,6 +1,10 @@
 {
   "name": "spotifood",
+<<<<<<< HEAD
   "homepage": "http://paulomoreno.github.io/ifood-frontend-test",
+=======
+  "homepage": "hhttp://paulomoreno.github.io/ifood-frontend-test",
+>>>>>>> 942cae59028faab1aecc039250fe331bd178a345
   "version": "0.1.0",
   "private": true,
   "dependencies": {
