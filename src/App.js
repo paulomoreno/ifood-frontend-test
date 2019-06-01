@@ -56,12 +56,12 @@ function App({ clearToken, getToken, access_token }) {
         </div>
       )}
       {access_token && (
-        <Container fluid className="playlistsWrapper h-100">
+        <Container fluid className="contentWrapper h-100">
           <Row className="align-items-stretch h-100">
             <Col style={{ flexGrow: 1 }}>
               <Playlists />
             </Col>
-            <Col xs lg="3" className="filtersWrapper">
+            <Col md="5" lg="4" xl="3" className="filtersWrapper d-none d-md-flex">
               <Filters />
             </Col>
           </Row>

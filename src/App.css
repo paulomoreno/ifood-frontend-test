@@ -30,11 +30,24 @@ body{
   align-items: center;
 }
 
-.playlistsWrapper{
+.contentWrapper{
   z-index: 1;
+}
+
+.playlistsWrapper{
+  height: calc(100vh - 62px);
+  overflow-y: scroll;
 }
 
 .loginWrapper{
   z-index: 1;
   background-color: transparent;
+}
+
+.navbar-collapse .filtersWrapperNav{
+  display: none;
+}
+
+.navbar-collapse.collapse.show .filtersWrapperNav{
+  display: flex;
 }

@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image';
-import Loader from './Loader';
+import Filters from './filters/FiltersWrapper';
 import SearchBarForm from "./SearchBarForm";
 
 import './navbar.css';
@@ -45,7 +45,11 @@ function CustomNavbar({ token, user, getUser, logout }) {
             >
               <NavDropdown.Item onClick={logoutOnClick}>Logout</NavDropdown.Item>
             </NavDropdown>
+            <div className="filtersWrapperNav">
+              <Filters />
+            </div>
           </Nav>
+
         )}
       </Navbar.Collapse>
     </Navbar >
