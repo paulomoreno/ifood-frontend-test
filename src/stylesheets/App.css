@@ -87,6 +87,6 @@ body{
     box-shadow: none;
 }
 
-.contentWrapper .badge .badge-info{
+.contentWrapper .badge.badge-info{
   background-color: #0c6c7b;
 }
