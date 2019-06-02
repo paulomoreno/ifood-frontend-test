@@ -11,7 +11,11 @@ const Playlist = ({ playlist }) => {
           <Image alt={`"${playlist.name}" cover image`} src={playlist.images[0].url} rounded />
         )}
         <h2 class="mt-2 mb-2">{playlist.name}</h2>
-        <p><b>{playlist.tracks && playlist.tracks.total}</b> faixas - Por <b>{playlist.owner && playlist.owner.display_name}</b></p>
+        <p>
+          <b>{playlist.tracks && playlist.tracks.total}</b> faixas 
+          - 
+          Por <b>{playlist.owner && playlist.owner.display_name}</b>
+        </p>
     </div>
   );
 }

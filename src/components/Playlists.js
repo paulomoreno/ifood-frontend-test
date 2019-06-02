@@ -2,20 +2,17 @@ import React, { useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Loader from './Loader';
-
-import {getPlaylists} from '../store/playlist/playlistActions';
 import FiltersBadges from './filters/FiltersBadges';
 import Playlist from "./Playlist";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {getPlaylists} from '../store/playlist/playlistActions';
 
 let setIntervalId;
 let REFRESH_PL_MS = 30 * 1000;
 
 const filterPlaylists = (playlists, localSearchForm) => {
-
-  console.log('localFilters:', localSearchForm)
   if (!playlists || !playlists.items) return [];
 
   if (!localSearchForm 
@@ -40,7 +37,7 @@ function Playlists({ playlists, getPlaylists, loading, localSearchForm }) {
     setIntervalId = setInterval(()=>{
       getPlaylists()
     },REFRESH_PL_MS);
-  }, []);
+  }, [getPlaylists]);
 
   const filteredPlaylists = filterPlaylists(playlists, localSearchForm);
 

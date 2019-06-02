@@ -1,11 +1,10 @@
 export const validations = {
   number: value =>
-    value && isNaN(Number(value)) ? 'Must be a number' : undefined,
+    value && isNaN(Number(value)) ? 'Deve ser um número' : undefined,
 
   minValue: min => value =>
-    value && value < min ? `Must be at least ${min}` : undefined,
+    value && value < min ? `Deve ser pelo menos ${min}` : undefined,
 
   maxValue: max => value =>
-    value && value > max ? `Cannot be more than ${max}` : undefined,
-    
+    value && value > max ? `Não pode ser maior que ${max}` : undefined,
 };

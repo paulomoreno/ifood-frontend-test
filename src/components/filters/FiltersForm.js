@@ -1,35 +1,25 @@
 import React, { useEffect } from "react";
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Popover from 'react-bootstrap/Popover';
-
+import Loader from '../Loader';
 import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
-
-import FormControl from 'react-bootstrap/FormControl';
 import { Field } from 'redux-form'
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-import { validations } from '../../helpers/validations';
-
-import Loader from '../Loader';
-
 import { getFiltersDefs, updateFilterQuery } from '../../store/filter/filterActions';
 
-const renderDatePicker = ({ input, meta: { touched, error } }) => {
+import "react-datepicker/dist/react-datepicker.css";
+
+const renderDatePicker = ({ input }) => {
   return (
     <div>
       <DatePicker
         id={input.id}
-        selected={input.value}
         onChange={input.onChange}
         showTimeSelect
         timeIntervals={1}
         shouldCloseOnSelect={false}
         className="form-control"
-        showTimeSelect
         dateFormat="dd/MM/yyyy h:mm aa"
         selected={input.value ? new Date(input.value) : null}
       />
@@ -72,10 +62,10 @@ const FieldInput = ({ input, label, meta, type, min, max, values, inputType, ent
   )
 }
 
-function FiltersForm({ filtersDefs, getFiltersDefs, updateFilterQuery, loading, idPrefix }) {
+let FiltersForm = ({ filtersDefs, getFiltersDefs, updateFilterQuery, loading, idPrefix }) => {
   useEffect(() => {
     getFiltersDefs();
-  }, []);
+  }, [getFiltersDefs]);
 
   return (
     <Form>
@@ -112,13 +102,9 @@ function mapDispatchToProps(dispatch) {
 
 FiltersForm = reduxForm({
   form: 'filtersForm',
-  onChange: (values, dispatch) => {
-    console.log('form changed values: ', values);
-  },
   onChange: (values, dispatch, props) => {
     dispatch(updateFilterQuery(values));
   }
 })(FiltersForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(FiltersForm)
-

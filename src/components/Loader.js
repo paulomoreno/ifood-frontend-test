@@ -1,6 +1,5 @@
 import React from "react";
 import Spinner from 'react-bootstrap/Spinner';
-import Col from 'react-bootstrap/Col';
 
 import '../stylesheets/loader.css';
 
@@ -11,7 +10,7 @@ const Loader = (props) => (
       role="status"
       {...props}
     >
-      <span className="sr-only">Loading...</span>
+      <span className="sr-only">Carregando...</span>
     </Spinner>
   </div>
 );

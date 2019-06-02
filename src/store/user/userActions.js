@@ -33,7 +33,7 @@ export const getUser = () => {
         loading()
       ]);
     }).catch(error => {
-      let errorMsg = getErrorMessage(error,'Error loading user information');
+      let errorMsg = getErrorMessage(error,'Erro ao carregar as informações do usuário');
       console.error(errorMsg, error);
       toastr.error('Error', errorMsg);
       dispatch([

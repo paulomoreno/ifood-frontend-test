@@ -9,7 +9,6 @@ export const loading = () => {
 
 export const getPlaylists = () => {
   return (dispatch,getState) => {
-    console.log('will get playlists', getState().filters.filters_query)
     dispatch(loading());
     
     apiRequest({
@@ -25,7 +24,7 @@ export const getPlaylists = () => {
         loading()
       ]);
     }).catch(error => {
-      let errorMsg = getErrorMessage(error,'Error loading list of playlists');
+      let errorMsg = getErrorMessage(error,'Erro ao carregar lista de playlists');
       console.error(errorMsg, error);
       toastr.error('Error', errorMsg);
       dispatch([

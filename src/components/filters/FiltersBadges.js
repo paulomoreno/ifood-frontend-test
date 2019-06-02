@@ -1,17 +1,16 @@
 
 import React from "react";
-
 import Badge from 'react-bootstrap/Badge';
 import { connect } from 'react-redux';
 
 import { findInArrayOfObjects } from '../../store/filter/filterActions';
 
-const FiltersBadges = ({filtersForm, localSearchForm, filtersDefs}) => {
+const FiltersBadges = ({ filtersForm, localSearchForm, filtersDefs }) => {
   const filters = [];
 
-  if (filtersForm && filtersForm.values){
+  if (filtersForm && filtersForm.values) {
 
-    Object.keys(filtersForm.values).forEach((key)=>{
+    Object.keys(filtersForm.values).forEach((key) => {
       const obj = findInArrayOfObjects(filtersDefs, key)[0];
       let name = key;
       let value = filtersForm.values[key];
@@ -28,22 +27,22 @@ const FiltersBadges = ({filtersForm, localSearchForm, filtersDefs}) => {
     })
   }
 
-  if (localSearchForm && localSearchForm.values && localSearchForm.values.name){
-      filters.push({
-        key: 'name',
-        name: 'Nome',
-        value: localSearchForm.values.name,
-      })
+  if (localSearchForm && localSearchForm.values && localSearchForm.values.name) {
+    filters.push({
+      key: 'name',
+      name: 'Nome',
+      value: localSearchForm.values.name,
+    })
   }
 
 
   return (
     <div>
-      {filters.map((filter,i)=>(
-        <Badge 
-            key={filter.key} 
-            variant={`info ${(i>0 && 'ml-4')}`}>
-            {filter.name}: {filter.value}
+      {filters.map((filter, i) => (
+        <Badge
+          key={filter.key}
+          variant={`info ${(i > 0 && 'ml-4')}`}>
+          {filter.name}: {filter.value}
         </Badge>
       ))}
     </div>

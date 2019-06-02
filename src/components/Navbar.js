@@ -1,22 +1,20 @@
 import React, { useEffect } from "react";
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image';
 import Filters from './filters/FiltersWrapper';
 import SearchBarForm from "./SearchBarForm";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getUser, clearUser } from '../store/user/userActions';
 
 import '../stylesheets/navbar.css';
-
-import { getUser, clearUser } from '../store/user/userActions';
 
 function CustomNavbar({ token, user, getUser, logout }) {
   useEffect(() => {
     if (token) getUser();
-  }, [token]);
+  }, [token, getUser]);
 
   const logoutOnClick = (e) => {
     e.preventDefault();
@@ -44,19 +42,17 @@ function CustomNavbar({ token, user, getUser, logout }) {
               }
               id="collasible-nav-dropdown"
             >
-              <NavDropdown.Item onClick={logoutOnClick}>Logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={logoutOnClick}>Sair</NavDropdown.Item>
             </NavDropdown>
             <div className="filtersWrapperNav">
               <Filters idPrefix="navFilterForm" />
             </div>
           </Nav>
-
         )}
       </Navbar.Collapse>
     </Navbar >
   );
 }
-
 
 function mapStateToProps(state) {
   return {

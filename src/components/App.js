@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -11,17 +10,16 @@ import Playlists from './Playlists';
 import ReduxToastr from 'react-redux-toastr'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { getAuthEndpoint } from '../helpers/auth';
+import { clearToken, getToken } from '../store/auth/authActions';
 
 import '../stylesheets/App.css';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 
-import { getAuthEndpoint } from '../helpers/auth';
-import { clearToken, getToken } from '../store/auth/authActions';
-
 function App({ clearToken, getToken, access_token }) {
   useEffect(() => {
     getToken();
-  }, []);
+  }, [getToken]);
 
   const logout = () => {
     clearToken();

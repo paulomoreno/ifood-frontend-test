@@ -15,8 +15,6 @@ export const apiRequest = async (options = {}) => {
 
   let resp;
 
-  // await new Promise(resolve=>setTimeout(resolve,5000));
-
   try {
     resp = await axios({
       method: options.method,
@@ -30,7 +28,7 @@ export const apiRequest = async (options = {}) => {
     });
   } catch (error) {
     if (error.response && error.response.status === 401){
-      toastr.confirm('Session expired. Do you want to login again?', {
+      toastr.confirm('Sessão expirada. Deseja entrar novamente?', {
         onOk: goToLogin,
         onCancel: clearSession,
       });

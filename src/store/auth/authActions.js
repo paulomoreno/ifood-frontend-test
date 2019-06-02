@@ -15,7 +15,6 @@ export const getToken = () => {
 
     window.location.hash = "";
 
-    // Tries to save the access_token
     if (hash.access_token) {
       localStorage.setItem(ACCESS_TOKEN_KEY, hash.access_token);
     }

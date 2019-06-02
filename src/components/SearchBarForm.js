@@ -2,13 +2,12 @@ import React from "react";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import MdSearch from 'react-ionicons/lib/MdSearch';
-
 import { Field } from 'redux-form'
 import { reduxForm } from 'redux-form';
 
 import '../stylesheets/searchBarButton.css';
 
-const FieldInput = ({ input, label, meta }) => {
+const FieldInput = ({ input, meta }) => {
   return (
     <InputGroup>
       <Form.Group
@@ -43,7 +42,6 @@ let SearchBarForm = () => (
     />
   </Form>
 );
-
 
 SearchBarForm = reduxForm({
   form: 'localSearchForm'

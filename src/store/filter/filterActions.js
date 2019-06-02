@@ -18,7 +18,7 @@ const parseFilters = (filters) => filters.map(def => {
 
   if (def.values){
     def.type = 'select-multi';
-    // Add default empty selected option
+    // Add default empty option on all selects
     def.values.unshift({
       key: '',
       value: '',
@@ -64,7 +64,7 @@ export const getFiltersDefs = () => {
         loading()
       ]);
     }).catch(error => {
-      toastr.error('Error', 'Error loading filters')
+      toastr.error('Error', 'Erro ao carregar filtros')
       dispatch([
         { type: 'LOAD_FILTERS_DEFS', payload: {} },
         loading()
