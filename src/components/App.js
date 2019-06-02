@@ -40,8 +40,8 @@ function App({ clearToken, getToken, access_token }) {
         closeOnToastrClick />
       {!access_token && (
         <div className="contentLogin h-100 align-items-center justify-content-center text-white">
-          <Jumbotron variant="dark" className="loginWrapper">
-            <h1>Bem Vindo ao Spotifood</h1>
+          <Jumbotron variant="dark" className="loginWrapper" role="main" aria-labelledby="loginJTTitle">
+            <h1 id="loginJTTitle">Bem Vindo ao Spotifood</h1>
             <p>
               Faça login usando sua conta do Spotify e aproveite uma nova maneira de visualizar suas playlists!
             </p>

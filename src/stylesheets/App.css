@@ -29,6 +29,11 @@ body{
   align-items: center;
 }
 
+.contentLogin a.btn.btn-success{
+  background-color: #156f29;
+  border-color: #156f29;
+}
+
 .contentWrapper{
   z-index: 1;
 }
