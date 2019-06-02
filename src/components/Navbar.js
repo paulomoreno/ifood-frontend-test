@@ -28,9 +28,12 @@ const CustomNavbar = ({
   return (
     <Navbar fixed="top" collapseOnSelect expand="md" bg="dark" variant="dark">
       <Navbar.Brand>Spotifood</Navbar.Brand>
+      {token && user && (
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end text-white">
-        {token && user && (
+      )}
+      {token && user && (
+        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end text-white">
+
           <Nav>
             <SearchBarForm />
             <NavDropdown
@@ -51,8 +54,8 @@ const CustomNavbar = ({
               <Filters idPrefix="navFilterForm" />
             </div>
           </Nav>
-        )}
-      </Navbar.Collapse>
+        </Navbar.Collapse>
+      )}
     </Navbar>
   );
 };
