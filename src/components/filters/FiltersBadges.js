@@ -35,7 +35,6 @@ const FiltersBadges = ({ filtersForm, localSearchForm, filtersDefs }) => {
     })
   }
 
-
   return (
     <div>
       {filters.map((filter, i) => (

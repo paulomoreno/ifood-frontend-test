@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
 import '../stylesheets/loader.css';
 
-const Loader = (props) => (
+const Loader = props => (
   <div className="loaderWrapper">
     <Spinner
       animation="border"

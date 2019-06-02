@@ -1,34 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import ReduxToastr from 'react-redux-toastr';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import Filters from './filters/FiltersWrapper';
 import Playlists from './Playlists';
-import ReduxToastr from 'react-redux-toastr'
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { getAuthEndpoint } from '../helpers/auth';
 import { clearToken, getToken } from '../store/auth/authActions';
 
 import '../stylesheets/App.css';
-import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
-function App({ clearToken, getToken, access_token }) {
+const App = ({ clearTokenConnect, getTokenConnect, accessToken }) => {
   useEffect(() => {
-    getToken();
-  }, [getToken]);
+    getTokenConnect();
+  }, [getTokenConnect]);
 
   const logout = () => {
-    clearToken();
-  }
+    clearTokenConnect();
+  };
 
   return (
     <div className="App h-100">
       <div className="body-bkg" />
-      <Navbar logout={logout}/>
+      <Navbar logout={logout} />
       <ReduxToastr
         timeOut={4000}
         newestOnTop={false}
@@ -37,13 +38,15 @@ function App({ clearToken, getToken, access_token }) {
         transitionIn="fadeIn"
         transitionOut="fadeOut"
         progressBar
-        closeOnToastrClick />
-      {!access_token && (
+        closeOnToastrClick
+      />
+      {!accessToken && (
         <div className="contentLogin h-100 align-items-center justify-content-center text-white">
           <Jumbotron variant="dark" className="loginWrapper" role="main" aria-labelledby="loginJTTitle">
             <h1 id="loginJTTitle">Bem Vindo ao Spotifood</h1>
             <p>
-              Faça login usando sua conta do Spotify e aproveite uma nova maneira de visualizar suas playlists!
+              Faça login usando sua conta do Spotify e aproveite uma nova maneira de visualizar
+              suas playlists!
             </p>
             <p>
               <Button variant="success" href={getAuthEndpoint()}>Login com Spotify</Button>
@@ -51,7 +54,7 @@ function App({ clearToken, getToken, access_token }) {
           </Jumbotron>
         </div>
       )}
-      {access_token && (
+      {accessToken && (
         <Container fluid className="contentWrapper h-100 text-white">
           <Row className="align-items-stretch h-100">
             <Col style={{ flexGrow: 1 }}>
@@ -65,16 +68,30 @@ function App({ clearToken, getToken, access_token }) {
       )}
     </div>
   );
-}
+};
+
+App.propTypes = {
+  clearTokenConnect: PropTypes.func.isRequired,
+  getTokenConnect: PropTypes.func.isRequired,
+  accessToken: PropTypes.string,
+};
+
+App.defaultProps = {
+  accessToken: null,
+};
+
 
 function mapStateToProps(state) {
   return {
-    access_token: state.auth.access_token,
-  }
+    accessToken: state.auth.access_token,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ clearToken, getToken }, dispatch)
+  return bindActionCreators({
+    clearTokenConnect: clearToken,
+    getTokenConnect: getToken,
+  }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

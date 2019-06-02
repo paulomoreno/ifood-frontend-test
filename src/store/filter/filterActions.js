@@ -1,6 +1,6 @@
 import { toastr } from 'react-redux-toastr';
 import axios from 'axios';
-import { validations } from '../../helpers/validations';
+import validations from '../../helpers/validations';
 import { getPlaylists } from '../playlist/playlistActions';
 import moment from 'moment';
 
