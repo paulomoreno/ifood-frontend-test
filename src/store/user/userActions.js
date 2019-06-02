@@ -1,45 +1,40 @@
-import { apiRequest, baseUrl, getErrorMessage } from '../../helpers/api';
 import { toastr } from 'react-redux-toastr';
+import { apiRequest, baseUrl, getErrorMessage } from '../../helpers/api';
 
-export const loading = () => {
-  return {
-    type: 'LOADING_USER'
-  }
-}
+export const loading = () => ({
+  type: 'LOADING_USER',
+});
 
-export const clearUser = () => {
-  return dispatch => {
-    dispatch(
+export const clearUser = () => (dispatch) => {
+  dispatch(
+    {
+      type: 'USER',
+      payload: null,
+    },
+  );
+};
+
+export const getUser = () => (dispatch) => {
+  dispatch(loading());
+
+  apiRequest({
+    method: 'get',
+    url: `${baseUrl}/me`,
+  }).then((resp) => {
+    dispatch([
       {
         type: 'USER',
-        payload: null
-      });
-  }
-}
-
-export const getUser = () => {
-  return dispatch => {
-    dispatch(loading());
-    
-    apiRequest({
-      method: 'get',
-      url: `${baseUrl}/me`,
-    }).then(resp => {
-      dispatch([
-        {
-          type: 'USER',
-          payload: resp.data
-        },
-        loading()
-      ]);
-    }).catch(error => {
-      let errorMsg = getErrorMessage(error,'Erro ao carregar as informações do usuário');
-      console.error(errorMsg, error);
-      toastr.error('Error', errorMsg);
-      dispatch([
-        { type: 'USER', payload: {} },
-        loading()
-      ])
-    })
-  }
-}
+        payload: resp.data,
+      },
+      loading(),
+    ]);
+  }).catch((error) => {
+    const errorMsg = getErrorMessage(error, 'Erro ao carregar as informações do usuário');
+    console.error(errorMsg, error);
+    toastr.error('Error', errorMsg);
+    dispatch([
+      { type: 'USER', payload: {} },
+      loading(),
+    ]);
+  });
+};

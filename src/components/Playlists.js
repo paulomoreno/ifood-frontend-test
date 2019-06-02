@@ -53,7 +53,7 @@ const Playlists = ({
           </Col>
         ))}
         {(!filteredPlaylists || filteredPlaylists.length === 0) && !loading && (
-        <Col>
+        <Col className="h-100 justify-content-center align-items-center d-flex">
           <p>Nenhuma playlist disponível</p>
         </Col>
         )}

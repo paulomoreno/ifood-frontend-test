@@ -56,3 +56,37 @@ body{
 .navbar-collapse.collapse.show .filtersWrapperNav{
   display: flex;
 }
+
+.customSearchInput input{
+    background-color: transparent !important;
+    border: none;
+    border-bottom: solid 1px #ddd;
+    border-radius: 0;
+    color: #fff;
+}
+
+.filtersForm input,
+.filtersForm select{
+  background-color: rgba(255,255,255,0.1) !important;
+  border: none;
+  border-bottom: solid 2px #ddd;
+  color: #fff;
+  border-radius: 0;
+  -webkit-appearance: none;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.customSearchInput input:focus,
+.filtersForm input:focus,
+.filtersForm select:focus{
+    background-color: transparent;
+    color: #fff;
+    border-bottom-color: #80bdff;
+    outline: 0;
+    box-shadow: none;
+}
+
+.contentWrapper .badge .badge-info{
+  background-color: #0c6c7b;
+}

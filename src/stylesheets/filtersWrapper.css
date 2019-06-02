@@ -5,3 +5,8 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
+
+.filtersWrapper .react-datepicker-wrapper, 
+.filtersWrapper .react-datepicker__input-container{
+  width: 100%;
+}

@@ -12,8 +12,7 @@ const Playlist = ({ playlist }) => (
     <h2 className="mt-2 mb-2">{playlist.name}</h2>
     <p>
       <b>{playlist.tracks && playlist.tracks.total}</b>
-      {' '}
-faixas - Por
+      {' faixas - Por '}
       <b>{playlist.owner && playlist.owner.display_name}</b>
     </p>
   </div>

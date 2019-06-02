@@ -1,6 +1,7 @@
 
-import React from "react";
+import React from 'react';
 import Badge from 'react-bootstrap/Badge';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { findInArrayOfObjects } from '../../store/filter/filterActions';
@@ -9,22 +10,24 @@ const FiltersBadges = ({ filtersForm, localSearchForm, filtersDefs }) => {
   const filters = [];
 
   if (filtersForm && filtersForm.values) {
-
     Object.keys(filtersForm.values).forEach((key) => {
       const obj = findInArrayOfObjects(filtersDefs, key)[0];
-      let name = key;
       let value = filtersForm.values[key];
-      if (name.length > 0) name = name.name;
 
-      if (obj.validation && obj.validation.entityType === 'DATE_TIME')
-        value = value.toLocaleString();
+      if (obj.validation && obj.validation.entityType === 'DATE_TIME') {
+        try {
+          value = new Date(value).toLocaleString();
+        } catch (e) {
+          // continue regardless of error
+        }
+      }
 
       filters.push({
         key,
         name: findInArrayOfObjects(filtersDefs, key)[0].name,
         value,
-      })
-    })
+      });
+    });
   }
 
   if (localSearchForm && localSearchForm.values && localSearchForm.values.name) {
@@ -32,7 +35,7 @@ const FiltersBadges = ({ filtersForm, localSearchForm, filtersDefs }) => {
       key: 'name',
       name: 'Nome',
       value: localSearchForm.values.name,
-    })
+    });
   }
 
   return (
@@ -40,13 +43,25 @@ const FiltersBadges = ({ filtersForm, localSearchForm, filtersDefs }) => {
       {filters.map((filter, i) => (
         <Badge
           key={filter.key}
-          variant={`info ${(i > 0 && 'ml-4')}`}>
-          {filter.name}: {filter.value}
+          variant={`info ${(i > 0 && 'ml-4')}`}
+        >
+          {`${filter.name}: ${filter.value}`}
         </Badge>
       ))}
     </div>
   );
+};
 
+FiltersBadges.propTypes = {
+  filtersForm: PropTypes.object,
+  localSearchForm: PropTypes.object,
+  filtersDefs: PropTypes.array,
+};
+
+FiltersBadges.defaultProps = {
+  filtersForm: {},
+  localSearchForm: {},
+  filtersDefs: [],
 };
 
 function mapStateToProps(state) {
@@ -54,7 +69,7 @@ function mapStateToProps(state) {
     filtersForm: state.form.filtersForm,
     localSearchForm: state.form.localSearchForm,
     filtersDefs: state.filters.defs,
-  }
+  };
 }
 
-export default connect(mapStateToProps)(FiltersBadges)
+export default connect(mapStateToProps)(FiltersBadges);
