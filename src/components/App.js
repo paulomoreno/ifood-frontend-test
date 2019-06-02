@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import ReduxToastr from 'react-redux-toastr';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import Login from './Login';
 import Navbar from './Navbar';
 import Filters from './filters/FiltersWrapper';
 import Playlists from './Playlists';
-import { getAuthEndpoint } from '../helpers/auth';
 import { clearToken, getToken } from '../store/auth/authActions';
 
 import '../stylesheets/App.css';
@@ -41,18 +39,7 @@ const App = ({ clearTokenConnect, getTokenConnect, accessToken }) => {
         closeOnToastrClick
       />
       {!accessToken && (
-        <div className="contentLogin h-100 align-items-center justify-content-center text-white">
-          <Jumbotron variant="dark" className="loginWrapper" role="main" aria-labelledby="loginJTTitle">
-            <h1 id="loginJTTitle">Bem Vindo ao Spotifood</h1>
-            <p>
-              Faça login usando sua conta do Spotify e aproveite uma nova maneira de visualizar
-              suas playlists!
-            </p>
-            <p>
-              <Button variant="success" href={getAuthEndpoint()}>Login com Spotify</Button>
-            </p>
-          </Jumbotron>
-        </div>
+        <Login />
       )}
       {accessToken && (
         <Container fluid className="contentWrapper h-100 text-white">
