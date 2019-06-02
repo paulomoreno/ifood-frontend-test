@@ -6,7 +6,7 @@ import MdSearch from 'react-ionicons/lib/MdSearch';
 import { Field } from 'redux-form'
 import { reduxForm } from 'redux-form';
 
-import './searchBarButton.css';
+import '../stylesheets/searchBarButton.css';
 
 const FieldInput = ({ input, label, meta }) => {
   return (

@@ -9,7 +9,7 @@ import Image from 'react-bootstrap/Image';
 import Filters from './filters/FiltersWrapper';
 import SearchBarForm from "./SearchBarForm";
 
-import './navbar.css';
+import '../stylesheets/navbar.css';
 
 import { getUser, clearUser } from '../store/user/userActions';
 

@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
-import Navbar from './components/Navbar';
-import Filters from './components/filters/FiltersWrapper';
-import Playlists from './components/Playlists';
+import Navbar from './Navbar';
+import Filters from './filters/FiltersWrapper';
+import Playlists from './Playlists';
 import ReduxToastr from 'react-redux-toastr'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import Form from 'react-bootstrap/Form';
-// import FormControl from 'react-bootstrap/FormControl';
 
-import './App.css';
+import '../stylesheets/App.css';
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 
-import { getAuthEndpoint } from './helpers/auth';
-import { clearToken, getToken } from './store/auth/authActions';
+import { getAuthEndpoint } from '../helpers/auth';
+import { clearToken, getToken } from '../store/auth/authActions';
 
 function App({ clearToken, getToken, access_token }) {
   useEffect(() => {

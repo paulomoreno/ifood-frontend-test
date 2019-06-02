@@ -6,9 +6,6 @@ import { connect } from 'react-redux';
 
 import { findInArrayOfObjects } from '../../store/filter/filterActions';
 
-
-import './filtersWrapper.css';
-
 const FiltersBadges = ({filtersForm, localSearchForm, filtersDefs}) => {
   const filters = [];
 

@@ -59,7 +59,7 @@ function Playlists({ playlists, getPlaylists, loading, localSearchForm }) {
           ))}
           {(!filteredPlaylists || filteredPlaylists.length === 0) && !loading && (
             <Col>
-              <p>No playlists available</p>
+              <p>Nenhuma playlist disponível</p>
             </Col>
           )}
         </Row>

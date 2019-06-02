@@ -2,7 +2,7 @@ import React from "react";
 import Spinner from 'react-bootstrap/Spinner';
 import Col from 'react-bootstrap/Col';
 
-import './loader.css';
+import '../stylesheets/loader.css';
 
 const Loader = (props) => (
   <div className="loaderWrapper">
