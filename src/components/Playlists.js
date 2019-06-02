@@ -41,7 +41,7 @@ const Playlists = ({
 
   return (
     <Container fluid className="playlistsWrapper" role="main" aria-labelledby="playlistsTitle">
-      <h1 id="playlistsTitle">Playlists </h1>
+      <h1 className="mt-3" id="playlistsTitle">Playlists </h1>
       <FiltersBadges />
       <Row>
         {loading && (
@@ -59,7 +59,6 @@ const Playlists = ({
         )}
       </Row>
     </Container>
-
   );
 };
 

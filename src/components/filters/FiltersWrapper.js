@@ -10,7 +10,7 @@ const FiltersWrapper = ({ idPrefix }) => {
   const titleId = `${idPrefix}-title`;
   return (
     <Container fluid role="form" aria-labelledby={titleId}>
-      <h1 id={titleId}>Filters</h1>
+      <h1 className="mt-3" id={titleId}>Filters</h1>
       <FiltersForm idPrefix={idPrefix} />
     </Container>
   );
