@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ifood-frontend-test/precache-manifest.62d13eec62c362c4934116a2a6468fb1.js"
+  "/ifood-frontend-test/precache-manifest.ad3b5d621195af0a84529da60c0b2693.js"
 );
 
 self.addEventListener('message', (event) => {
