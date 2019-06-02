@@ -28,7 +28,7 @@ export const getPlaylists = () => {
       console.error(errorMsg, error);
       toastr.error('Error', errorMsg);
       dispatch([
-        { type: 'PLAYLISTS', payload: {} },
+        { type: 'PLAYLISTS', payload: {}},
         loading()
       ]);
     });

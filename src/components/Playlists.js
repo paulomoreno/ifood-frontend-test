@@ -64,14 +64,14 @@ const Playlists = ({
 };
 
 Playlists.propTypes = {
-  playlists: PropTypes.array,
+  playlists: PropTypes.object,
   getPlaylistsConnect: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   localSearchForm: PropTypes.object,
 };
 
 Playlists.defaultProps = {
-  playlists: [],
+  playlists: {},
   loading: true,
   localSearchForm: {},
 };
@@ -79,7 +79,7 @@ Playlists.defaultProps = {
 function mapStateToProps(state) {
   return {
     loading: state.playlists.loading,
-    playlists: state.playlists.list,
+    playlists: state.playlists.response,
     localSearchForm: state.form.localSearchForm,
     token: state.auth.access_token,
   };
