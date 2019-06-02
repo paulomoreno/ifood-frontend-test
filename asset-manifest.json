@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ifood-frontend-test/static/css/main.d32d8115.chunk.css",
-    "main.js": "/ifood-frontend-test/static/js/main.9fdc4fbf.chunk.js",
-    "main.js.map": "/ifood-frontend-test/static/js/main.9fdc4fbf.chunk.js.map",
+    "main.css": "/ifood-frontend-test/static/css/main.26770d32.chunk.css",
+    "main.js": "/ifood-frontend-test/static/js/main.77c02c10.chunk.js",
+    "main.js.map": "/ifood-frontend-test/static/js/main.77c02c10.chunk.js.map",
     "runtime~main.js": "/ifood-frontend-test/static/js/runtime~main.1301fedf.js",
     "runtime~main.js.map": "/ifood-frontend-test/static/js/runtime~main.1301fedf.js.map",
-    "static/css/2.dae6fbb9.chunk.css": "/ifood-frontend-test/static/css/2.dae6fbb9.chunk.css",
-    "static/js/2.ee59be88.chunk.js": "/ifood-frontend-test/static/js/2.ee59be88.chunk.js",
-    "static/js/2.ee59be88.chunk.js.map": "/ifood-frontend-test/static/js/2.ee59be88.chunk.js.map",
+    "static/css/2.645f6638.chunk.css": "/ifood-frontend-test/static/css/2.645f6638.chunk.css",
+    "static/js/2.2ecc12cc.chunk.js": "/ifood-frontend-test/static/js/2.2ecc12cc.chunk.js",
+    "static/js/2.2ecc12cc.chunk.js.map": "/ifood-frontend-test/static/js/2.2ecc12cc.chunk.js.map",
     "index.html": "/ifood-frontend-test/index.html",
-    "precache-manifest.2884c5b0afde3dde38629ba840938d30.js": "/ifood-frontend-test/precache-manifest.2884c5b0afde3dde38629ba840938d30.js",
+    "precache-manifest.6ad6fee9a3660780c528d4c365cc9d87.js": "/ifood-frontend-test/precache-manifest.6ad6fee9a3660780c528d4c365cc9d87.js",
     "service-worker.js": "/ifood-frontend-test/service-worker.js",
-    "static/css/2.dae6fbb9.chunk.css.map": "/ifood-frontend-test/static/css/2.dae6fbb9.chunk.css.map",
-    "static/css/main.d32d8115.chunk.css.map": "/ifood-frontend-test/static/css/main.d32d8115.chunk.css.map"
+    "static/css/2.645f6638.chunk.css.map": "/ifood-frontend-test/static/css/2.645f6638.chunk.css.map",
+    "static/css/main.26770d32.chunk.css.map": "/ifood-frontend-test/static/css/main.26770d32.chunk.css.map"
   }
 }
