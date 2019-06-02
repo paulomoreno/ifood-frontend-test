@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ifood-frontend-test/static/css/main.adac7e56.chunk.css",
-    "main.js": "/ifood-frontend-test/static/js/main.bc25d3d5.chunk.js",
-    "main.js.map": "/ifood-frontend-test/static/js/main.bc25d3d5.chunk.js.map",
+    "main.js": "/ifood-frontend-test/static/js/main.47bf94c7.chunk.js",
+    "main.js.map": "/ifood-frontend-test/static/js/main.47bf94c7.chunk.js.map",
     "runtime~main.js": "/ifood-frontend-test/static/js/runtime~main.1301fedf.js",
     "runtime~main.js.map": "/ifood-frontend-test/static/js/runtime~main.1301fedf.js.map",
     "static/css/2.645f6638.chunk.css": "/ifood-frontend-test/static/css/2.645f6638.chunk.css",
-    "static/js/2.dc8a4d1c.chunk.js": "/ifood-frontend-test/static/js/2.dc8a4d1c.chunk.js",
-    "static/js/2.dc8a4d1c.chunk.js.map": "/ifood-frontend-test/static/js/2.dc8a4d1c.chunk.js.map",
+    "static/js/2.f8735320.chunk.js": "/ifood-frontend-test/static/js/2.f8735320.chunk.js",
+    "static/js/2.f8735320.chunk.js.map": "/ifood-frontend-test/static/js/2.f8735320.chunk.js.map",
     "index.html": "/ifood-frontend-test/index.html",
-    "precache-manifest.09ab6cb7c2f49bad8ff487796dd169c9.js": "/ifood-frontend-test/precache-manifest.09ab6cb7c2f49bad8ff487796dd169c9.js",
+    "precache-manifest.5f40fec06cee6526b9a25341a11e5dd0.js": "/ifood-frontend-test/precache-manifest.5f40fec06cee6526b9a25341a11e5dd0.js",
     "service-worker.js": "/ifood-frontend-test/service-worker.js",
     "static/css/2.645f6638.chunk.css.map": "/ifood-frontend-test/static/css/2.645f6638.chunk.css.map",
     "static/css/main.adac7e56.chunk.css.map": "/ifood-frontend-test/static/css/main.adac7e56.chunk.css.map"
