@@ -1,29 +1,60 @@
-# iFood Frontend Test
+# Spotifood
 
-Create a web application called Spotifood used to display the preferred playlists from iFood's customers. The web application has only one page:
-* A page that lists the featured playlists at Spotify according to some criteria.
+Spotifood is a React Application that can display a list of featured playlists using Spotify's API. It also lets the user filter the playlists locally using a search input, or, on Spotify using their API and a custom built filter that's dinamically loaded from an [API](http://www.mocky.io/v2/5a25fade2e0000213aa90776).
 
-## Business rules
+It's currently live and can be accessed [here](https://paulomoreno.github.io/ifood-frontend-test/).
 
-* The page is composed of two components:
-    * One list of featured playlists
-    * One filter component with API filter fields and one local search text input to filter the playlists by "name".
+### Architecture
+
+The application was built on top of react and redux. It is based on fours basic reducers:
+
+- Authentication 
+  - This is responsible for storing the access token used to consume Spotify's API;
+- User Information
+  - Current logged in user information;
+- Filters
+  - Loading, parsing and storing the dynamic filters;
+- Playlists 
+  - Playlists loaded according to the current dynamic filters;
     
-* The filter component should be used to filter the elements displayed by the list of featured playlists.
-* The API filter fields and their possible values/type should be mounted by consuming this API **[1. Playlists Filters]** (http://www.mocky.io/v2/5a25fade2e0000213aa90776)
-* The featured playlists to be displayed should be consumed from this API **[2. See the documentation from Spotify]** (https://developer.spotify.com/web-api/get-list-featured-playlists/)
-* Every time the user change any information on the filter component, the list should be refresh accordingly. In case of API filter field change you should recall the playlists API with the filter parameters every time.
-* Considering that we live in a chaotic and fast-changing world, the page should refresh its content every 30 seconds, to see if any information from the Spotify APIs had been changed.
+There are also a couple of utility files that helpes retrieving the access_token and making API requests.
 
-## Hints or Constraints
+Environment vairables were use to store callback URLs for development and production envinroments - as well as saving the cliend_id.
 
-We will use one API from Spotify Web API. You should follow the Spotify guide in order to create a token needed to access Spotify's API.
-To mount the API filter fields on the filter component, you **must** consume the API that provides the metadata about the fields (Link 1).
-You could use Material UI, Bootstrap or any other toolkit to accelerate your resolution. We will not provide any UI prototype or design.
+The main libraries used were:
+ - [react-boostrap](https://react-bootstrap.github.io): an accessible front-end framework
+ - [redux](https://redux.js.org)
+ - [redux-form](https://redux-form.com/8.2.2/) form state management
+ - [axios](https://github.com/axios/axios) API Calls
+ - [gh-pages](https://github.com/tschaub/gh-pages) deployment
+ - [aXe](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd) extension to test accessibility
 
-## Non functional requirements
 
-As this application will be a worldwide success, it must be prepared to be accessible, responsive, fault tolerant and resilient.
-We **strongly recommend** using React to build the application.
-Also, briefly elaborate on your solution architecture details, choice of patterns and frameworks.
-Fork this repository and submit your code.
+A css pre-compiler (such as sass) was not used for simplicity.
+
+Airbnb JavaScript code style was used.
+
+### Features
+
+#### Error handling
+All API requests that comes with an error will result in a custom toastr message. If a message is provided on the API error response, it will be used to inform the user. Otherwise, a default error message will be shown.
+
+#### Session management
+The access_token is always saved on local storage so the user can refresh the page and his token will still be accessible. Also, when the current token expires, the user will receive the option to a) go to spotify's login page or b) logout.
+
+#### Auto-refresh
+The page will always make a new API request every 30 seconds to make sure the user always have the latest information available.
+
+#### Mobile friendly
+the page is fully responsive. When on small screen devices, the filters are hidden and available trhough the navigation bar.
+
+#### Acessible
+With accessibility in mind, the website was built using bootstrap, and verified using [aXe's chrome extension](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd).
+
+
+### Known Issues and Improvements
+
+- After the user logs out, the access_token is removed, but the routine that refreshs the playlists keeps running, causing a "Session expired" alert.
+
+
+
