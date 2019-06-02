@@ -46,7 +46,7 @@ The access_token is always saved on local storage so the user can refresh the pa
 The page will always make a new API request every 30 seconds to make sure the user always have the latest information available.
 
 #### Mobile friendly
-the page is fully responsive. When on small screen devices, the filters are hidden and available trhough the navigation bar.
+The page is fully responsive. When on small screen devices, the filters are hidden and available through the navigation bar. Also, filter badges were included to make sure users understand what is currently being filtered without opening the filter menu.
 
 #### Acessible
 With accessibility in mind, the website was built using bootstrap, and verified using [aXe's chrome extension](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd).
