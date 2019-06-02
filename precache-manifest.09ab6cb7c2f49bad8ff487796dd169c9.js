@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ff5892cbf8fc9cbc771088433c1dc5c6",
+    "revision": "161b431d648aa7918c425db22574b440",
     "url": "/ifood-frontend-test/index.html"
   },
   {
