@@ -1,6 +1,6 @@
 const authSettings = {
   endpoint: 'https://accounts.spotify.com/authorize',
-  clientId: "525daf8037874b95b21b21fda6399d0e",
+  clientId: process.env.REACT_APP_CLIENT_ID,
   redirectUri: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_REDIRECT_URL : process.env.REACT_APP_DEV_REDIRECT_URL,
   scopes: [],
 }
