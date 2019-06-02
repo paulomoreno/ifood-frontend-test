@@ -22,6 +22,7 @@ const renderDatePicker = ({ input, meta: { touched, error } }) => {
   return (
     <div>
       <DatePicker
+        id={input.id}
         selected={input.value}
         onChange={input.onChange}
         showTimeSelect
@@ -36,15 +37,17 @@ const renderDatePicker = ({ input, meta: { touched, error } }) => {
   )
 };
 
-const FieldInput = ({ input, label, meta, type, min, max, values, inputType, entityType }) => {
+const FieldInput = ({ input, label, meta, type, min, max, values, inputType, entityType, idPrefix }) => {
   let _as = type;
   if (type === 'select-multi')
     _as = 'select';
   if (entityType === 'DATE_TIME')
     _as = renderDatePicker;
 
+  input.id = `${idPrefix}-${input.name}`;
+
   return (
-    <Form.Group controlId={input.name}>
+    <Form.Group controlId={input.id}>
       <Form.Label>{label}</Form.Label>
       <Form.Control
         as={_as}
@@ -69,7 +72,7 @@ const FieldInput = ({ input, label, meta, type, min, max, values, inputType, ent
   )
 }
 
-function FiltersForm({ filtersDefs, getFiltersDefs, updateFilterQuery, loading }) {
+function FiltersForm({ filtersDefs, getFiltersDefs, updateFilterQuery, loading, idPrefix }) {
   useEffect(() => {
     getFiltersDefs();
   }, []);
@@ -85,6 +88,7 @@ function FiltersForm({ filtersDefs, getFiltersDefs, updateFilterQuery, loading }
             {...filter}
             label={filter.name}
             name={filter.id}
+            idPrefix={idPrefix}
             inputType={filter.inputType}
             component={FieldInput}
           >

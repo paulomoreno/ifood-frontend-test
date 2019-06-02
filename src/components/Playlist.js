@@ -6,13 +6,13 @@ import { bindActionCreators } from 'redux';
 import './playlist.css';
 
 const Playlist = ({ playlist }) => {
-  // console.log(playlist);
+  console.log(playlist);
   return (
     <div className="playlist">
         {playlist.images && playlist.images.length > 0 && (
-          <Image src={playlist.images[0].url} rounded />
+          <Image alt={`"${playlist.name}" cover image`} src={playlist.images[0].url} rounded />
         )}
-        <h3>{playlist.name}</h3>
+        <h2>{playlist.name}</h2>
     </div>
   );
 }

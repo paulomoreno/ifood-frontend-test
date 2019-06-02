@@ -62,7 +62,7 @@ function App({ clearToken, getToken, access_token }) {
               <Playlists />
             </Col>
             <Col md="5" lg="4" xl="3" className="filtersWrapper d-none d-md-flex">
-              <Filters />
+              <Filters idPrefix="sideFilterForm" />
             </Col>
           </Row>
         </Container>

@@ -45,8 +45,8 @@ function Playlists({ playlists, getPlaylists, loading, localSearchForm }) {
   const filteredPlaylists = filterPlaylists(playlists, localSearchForm);
 
   return (
-    <Container fluid className="playlistsWrapper">
-        <h1>Playlists </h1>
+    <Container fluid className="playlistsWrapper" role="main" aria-labelledby="playlistsTitle">
+        <h1 id="playlistsTitle">Playlists </h1>
         <FiltersBadges/>
         <Row>
           {loading && (

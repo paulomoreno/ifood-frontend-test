@@ -8,17 +8,14 @@ import Button from 'react-bootstrap/Button'
 
 import './filtersWrapper.css';
 
-const FiltersWrapper = () => {
-  const [open, setOpen] = useState(true);
+const FiltersWrapper = ({idPrefix}) => {
 
-  const toggleOpen = () => {
-    setOpen(!open);
-  }
+  const titleId= `${idPrefix}-title`;
 
   return (
-    <Container fluid>
-      <h1 onClick={toggleOpen}>Filters</h1>
-      <FiltersForm />
+    <Container fluid role="form" aria-labelledby={titleId}>
+      <h1 id={titleId}>Filters</h1>
+      <FiltersForm idPrefix={idPrefix}/>
     </Container>
   )
 };

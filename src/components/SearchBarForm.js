@@ -13,12 +13,12 @@ const FieldInput = ({ input, label, meta }) => {
     <InputGroup>
       <Form.Group
         className="customSearchInput"
-        controlId={input.name}
+        controlId={`navForm-${input.name}`}
       >
+        <Form.Label className="mr-2" >Busca: </Form.Label>
         <Form.Control
           {...input}
           type="text"
-          placeholder="Buscar por nome"
           meta={meta}
         />
       </Form.Group>
