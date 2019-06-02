@@ -3,5 +3,5 @@
   background-color: rgba(50,50,50,0.2);
   min-width: 340px;
   overflow-y: scroll;
-  /* border-left: solid 1px #222; */
+  -webkit-overflow-scrolling: touch;
 }

@@ -36,6 +36,7 @@ body{
 .playlistsWrapper{
   height: calc(100vh - 62px);
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .loginWrapper{
