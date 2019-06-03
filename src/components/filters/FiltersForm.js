@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
+import Badge from 'react-bootstrap/Badge';
 import DatePicker from 'react-datepicker';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
@@ -61,7 +62,7 @@ const FieldInput = ({
         ))}
       </Form.Control>
       {meta.error && (
-        <div className="invalid-feedback">{meta.error}</div>
+        <Badge variant="danger">{meta.error}</Badge>
       )}
     </Form.Group>
   );
